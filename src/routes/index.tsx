@@ -11,6 +11,7 @@ const routesConfig: RouteObject[] = [
   {
     path: "/",
     element: <App />,
+    children: [],
   },
 ];
 

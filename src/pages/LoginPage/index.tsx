@@ -1,10 +1,15 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 
 import { InputCustom } from "../../components/form/InputCustom";
 import { InputPasswordCustom } from "../../components/form/InputPasswordCustom";
+import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
+import { selectUsername } from "../../stores/auth";
+import { signInWithCredentials } from "../../stores/auth/auth.thunk";
 
 export interface LoginFormType {
   username: string;
@@ -17,6 +22,13 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
+  const username =
+    useAppSelector(selectUsername) || localStorage.getItem("username");
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const [message, setMessage] = useState<string>("");
+
   const {
     handleSubmit,
     control,
@@ -30,8 +42,18 @@ const LoginPage = () => {
     },
   });
 
-  const onSubmit = (data: LoginFormType) => {
-    console.log(data);
+  useEffect(() => {
+    if (!username) return;
+    navigate("/");
+  }, [username]);
+
+  const onSubmit = async (data: LoginFormType) => {
+    const response = await dispatch(signInWithCredentials(data));
+
+    if (!response.payload) {
+      setMessage("Tài khoản hoặc mật khẩu không đúng!");
+      return;
+    }
   };
 
   return (
@@ -44,8 +66,13 @@ const LoginPage = () => {
         gap={10}
         direction={"column"}
       >
-        <Text fontSize={"48px"} fontWeight={700}>
+        <Text align={"center"} fontSize={"48px"} fontWeight={700}>
           Login
+          {message && (
+            <Text align={"center"} fontSize={"14px"} color={"red"}>
+              {message}
+            </Text>
+          )}
         </Text>
 
         <form onSubmit={handleSubmit(onSubmit)}>
