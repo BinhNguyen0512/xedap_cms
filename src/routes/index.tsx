@@ -5,6 +5,7 @@ import { DefaultLayout } from "../components/ui/DefaultLayout";
 import DanhMucPage from "../pages/DanhMucPage";
 import DanhMucCreate from "../pages/DanhMucPage/DanhMucCreate";
 import DanhMucEdit from "../pages/DanhMucPage/DanhMucEdit";
+import DonHangUserPage from "../pages/DonHangUserPage";
 import KhachHangPage from "../pages/KhachHangPage";
 import LoginPage from "../pages/LoginPage";
 import NhaCungCapPage from "../pages/NhaCungCapPage";
@@ -85,6 +86,10 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/sanpham",
             element: <SanPhamPage />,
+          },
+          {
+            path: "/admin/donhanguser",
+            element: <DonHangUserPage />,
           },
         ],
       },
