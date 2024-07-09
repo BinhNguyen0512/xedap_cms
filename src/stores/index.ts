@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth";
 import danhmucReducer from "./danhmuc";
 import nhacungcapReducer from "./nhacungcap";
+import nhanvienReducer from "./nhanvien";
 import thuonghieuReducer from "./thuonghieu";
 
 const rootReducers = {
@@ -10,6 +11,7 @@ const rootReducers = {
   danhmuc: danhmucReducer,
   thuonghieu: thuonghieuReducer,
   nhacungcap: nhacungcapReducer,
+  nhanvien: nhanvienReducer,
 };
 
 const store = configureStore({

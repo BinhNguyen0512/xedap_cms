@@ -11,6 +11,8 @@ import NhaCungCapPage from "../pages/NhaCungCapPage";
 import NhaCungCapCreate from "../pages/NhaCungCapPage/NhaCungCapCreate";
 import NhaCungCapEdit from "../pages/NhaCungCapPage/NhaCungCapEdit";
 import NhanVienPage from "../pages/NhanVienPage";
+import NhanVienCreate from "../pages/NhanVienPage/NhanVienCreate";
+import NhanVienEdit from "../pages/NhanVienPage/NhanVienEdit";
 import SanPhamPage from "../pages/SanPhamPage";
 import ThuongHieuPage from "../pages/ThuongHieuPage";
 import ThuongHieuCreate from "../pages/ThuongHieuPage/ThuongHieuCreate";
@@ -55,6 +57,14 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/nhanvien",
             element: <NhanVienPage />,
+          },
+          {
+            path: "/admin/nhanvien/create",
+            element: <NhanVienCreate />,
+          },
+          {
+            path: "/admin/nhanvien/:manv",
+            element: <NhanVienEdit />,
           },
           {
             path: "/admin/khachhang",

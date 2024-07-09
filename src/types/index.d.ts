@@ -1,6 +1,7 @@
 import { AuthStateType } from "../stores/auth";
 import { DanhMucStateType } from "../stores/danhmuc";
 import { NhaCungCapStateType } from "../stores/nhacungcap";
+import { NhanVienStateType } from "../stores/nhanvien";
 import { ThuongHieuStateType } from "../stores/thuonghieu";
 
 type AppDispatch = typeof store.dispatch;
@@ -10,4 +11,5 @@ interface ApplicationRootState {
   readonly danhmuc: DanhMucStateType;
   readonly thuonghieu: ThuongHieuStateType;
   readonly nhacungcap: NhaCungCapStateType;
+  readonly nhanvien: NhanVienStateType;
 }
