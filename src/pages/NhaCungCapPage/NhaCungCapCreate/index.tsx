@@ -1,43 +1,46 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import { DanhMucService } from "../../../api/danhmuc";
+import { NhaCungCapService } from "../../../api/nhacungcap";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
-import { DanhMucFormType } from "../../../types/danhmuc";
-import { DanhMucForm } from "../DanhMucForm";
-import { validationDanhMuc } from "../ValidationDanhMuc";
+import { NhaCungCapFormType } from "../../../types/nhacungcap";
+import { NhaCungCapForm } from "../NhaCungCapForm";
+import { validationNhaCungCap } from "../ValidationNhaCungCap";
 
-const DanhMucCreate = () => {
+const NhaCungCapCreate = () => {
   const toast = useToastCustom();
   const {
     handleSubmit,
     control,
     formState: { errors },
     reset,
-  } = useForm<DanhMucFormType>({
+  } = useForm<NhaCungCapFormType>({
     mode: "onChange",
-    resolver: yupResolver(validationDanhMuc),
+    resolver: yupResolver(validationNhaCungCap),
     defaultValues: {
-      madm: "",
-      tendm: "",
+      mancc: "",
+      tenncc: "",
+      diachi: "",
+      email: "",
+      sdt: "",
     },
   });
 
-  const onSubmit = async (data: DanhMucFormType) => {
+  const onSubmit = async (data: NhaCungCapFormType) => {
     try {
-      const response = await DanhMucService.createDanhMuc(data);
+      const response = await NhaCungCapService.createNhaCungCap(data);
 
       toast({
-        title: "Tạo danh mục",
+        title: "Tạo nhà cung cấp",
         description: response.data,
         status: "success",
       });
       reset();
     } catch (error) {
       toast({
-        title: "Tạo danh mục",
+        title: "Tạo nhà cung cấp",
         description: (error as any).response.data,
         status: "error",
       });
@@ -47,20 +50,20 @@ const DanhMucCreate = () => {
   return (
     <PageWrapper>
       <TitlePage
-        linkReturn={"/admin/danhmuc"}
+        linkReturn={"/admin/nhacungcap"}
         isShowButtonCreate={false}
-        title="Tạo danh mục"
+        title="Tạo nhà cung cấp"
       />
 
-      <DanhMucForm
+      <NhaCungCapForm
         control={control}
         errors={errors}
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
-        titleButton="Tạo danh mục"
+        titleButton="Tạo nhà cung cấp"
       />
     </PageWrapper>
   );
 };
 
-export default DanhMucCreate;
+export default NhaCungCapCreate;

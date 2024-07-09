@@ -3,11 +3,13 @@ import { RouteObject } from "react-router-dom";
 import App from "../App";
 import { DefaultLayout } from "../components/ui/DefaultLayout";
 import DanhMucPage from "../pages/DanhMucPage";
-import { DanhMucCreate } from "../pages/DanhMucPage/DanhMucCreate";
-import { DanhMucEdit } from "../pages/DanhMucPage/DanhMucEdit";
+import DanhMucCreate from "../pages/DanhMucPage/DanhMucCreate";
+import DanhMucEdit from "../pages/DanhMucPage/DanhMucEdit";
 import KhachHangPage from "../pages/KhachHangPage";
 import LoginPage from "../pages/LoginPage";
 import NhaCungCapPage from "../pages/NhaCungCapPage";
+import NhaCungCapCreate from "../pages/NhaCungCapPage/NhaCungCapCreate";
+import NhaCungCapEdit from "../pages/NhaCungCapPage/NhaCungCapEdit";
 import NhanVienPage from "../pages/NhanVienPage";
 import SanPhamPage from "../pages/SanPhamPage";
 import ThuongHieuPage from "../pages/ThuongHieuPage";
@@ -59,8 +61,16 @@ const routesConfig: RouteObject[] = [
             element: <KhachHangPage />,
           },
           {
-            path: "/admin/cungcap",
+            path: "/admin/nhacungcap",
             element: <NhaCungCapPage />,
+          },
+          {
+            path: "/admin/nhacungcap/create",
+            element: <NhaCungCapCreate />,
+          },
+          {
+            path: "/admin/nhacungcap/:mancc",
+            element: <NhaCungCapEdit />,
           },
           {
             path: "/admin/sanpham",

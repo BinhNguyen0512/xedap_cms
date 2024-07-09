@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-import { DanhMucService } from "../../../api/danhmuc";
+import { NhaCungCapService } from "../../../api/nhacungcap";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
-import { DanhMucFormType } from "../../../types/danhmuc";
-import { DanhMucForm } from "../DanhMucForm";
-import { validationDanhMuc } from "../ValidationDanhMuc";
+import { NhaCungCapFormType } from "../../../types/nhacungcap";
+import { NhaCungCapForm } from "../NhaCungCapForm";
+import { validationNhaCungCap } from "../ValidationNhaCungCap";
 
-const DanhMucEdit = () => {
+const NhaCungCapEdit = () => {
   const toast = useToastCustom();
-  const { madm: madmParams } = useParams();
+  const { mancc: manccParams } = useParams();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -23,41 +23,47 @@ const DanhMucEdit = () => {
     control,
     setValue,
     formState: { errors },
-  } = useForm<DanhMucFormType>({
+  } = useForm<NhaCungCapFormType>({
     mode: "onChange",
-    resolver: yupResolver(validationDanhMuc),
+    resolver: yupResolver(validationNhaCungCap),
     defaultValues: {
-      madm: "",
-      tendm: "",
+      mancc: "",
+      tenncc: "",
+      diachi: "",
+      email: "",
+      sdt: "",
     },
   });
 
   useEffect(() => {
-    if (!madmParams) return;
+    if (!manccParams) return;
 
     const fetchData = async () => {
-      const response = await DanhMucService.getDetailDanhMuc(madmParams);
-      const { madm, tendm } = response.data;
+      const response = await NhaCungCapService.getDetailNhaCungCap(manccParams);
+      const { mancc, tenncc, diachi, sdt, email } = response.data;
 
-      setValue("madm", madm);
-      setValue("tendm", tendm);
+      setValue("mancc", mancc);
+      setValue("tenncc", tenncc);
+      setValue("diachi", diachi);
+      setValue("sdt", sdt);
+      setValue("email", email);
       setIsLoading(false);
     };
     fetchData();
-  }, [madmParams]);
+  }, [manccParams]);
 
-  const onSubmit = async (data: DanhMucFormType) => {
+  const onSubmit = async (data: NhaCungCapFormType) => {
     try {
-      await DanhMucService.updateDanhMuc(data.madm, data);
+      await NhaCungCapService.updateNhaCungCap(data.mancc, data);
 
       toast({
-        title: "Update danh mục",
-        description: "Update danh mục thành công!",
+        title: "Update nhà cung cấp",
+        description: "Update nhà cung cấp thành công!",
         status: "success",
       });
     } catch (error) {
       toast({
-        title: "Update danh mục",
+        title: "Update nhà cung cấp",
         description: "Đã xảy ra lỗi, vui lòng thử lại sau!",
         status: "error",
       });
@@ -80,12 +86,12 @@ const DanhMucEdit = () => {
     }
 
     return (
-      <DanhMucForm
+      <NhaCungCapForm
         control={control}
         errors={errors}
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
-        titleButton="Cập nhật danh mục"
+        titleButton="Cập nhật nhà cung cấp"
         isEdit
       />
     );
@@ -94,9 +100,9 @@ const DanhMucEdit = () => {
   return (
     <PageWrapper>
       <TitlePage
-        linkReturn={"/admin/danhmuc"}
+        linkReturn={"/admin/nhacungcap"}
         isShowButtonCreate={false}
-        title="Update danh mục"
+        title="Update nhà cung cấp"
       />
 
       {renderForm()}
@@ -104,4 +110,4 @@ const DanhMucEdit = () => {
   );
 };
 
-export default DanhMucEdit;
+export default NhaCungCapEdit;
