@@ -25,14 +25,10 @@ const extraReducers = (
       // eslint-disable-next-line prettier/prettier
     }
   );
-  builder.addCase(
-    signInWithCredentials.rejected,
-    (state: AuthStateType, action) => {
-      console.log(action);
-      state.isLoading = false;
-      // eslint-disable-next-line prettier/prettier
-    }
-  );
+  builder.addCase(signInWithCredentials.rejected, (state: AuthStateType) => {
+    state.isLoading = false;
+    // eslint-disable-next-line prettier/prettier
+  });
 };
 
 export default extraReducers;

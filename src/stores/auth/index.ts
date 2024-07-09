@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { ApplicationRootState } from "../../types";
 import extraReducers from "./auth.extraReducers";
 
 export interface AuthStateType {

@@ -94,7 +94,11 @@ export const DanhMucEdit = () => {
 
   return (
     <PageWrapper>
-      <TitlePage isShowButtonCreate={false} title="Update danh mục" />
+      <TitlePage
+        linkReturn={"/admin/danhmuc"}
+        isShowButtonCreate={false}
+        title="Update danh mục"
+      />
 
       {renderForm()}
     </PageWrapper>

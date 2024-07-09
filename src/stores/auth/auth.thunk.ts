@@ -11,7 +11,7 @@ export const signInWithCredentials = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error);
     }
     // eslint-disable-next-line prettier/prettier
   }

@@ -46,7 +46,11 @@ export const DanhMucCreate = () => {
 
   return (
     <PageWrapper>
-      <TitlePage isShowButtonCreate={false} title="Tạo danh mục" />
+      <TitlePage
+        linkReturn={"/admin/danhmuc"}
+        isShowButtonCreate={false}
+        title="Tạo danh mục"
+      />
 
       <DanhMucForm
         control={control}
