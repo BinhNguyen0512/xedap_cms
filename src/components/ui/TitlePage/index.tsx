@@ -9,6 +9,7 @@ interface Props {
   onClickCreate?: () => void;
   linkReturn?: string;
   isShowButtonCreate?: boolean;
+  titleButtonCreate?: string;
 }
 
 export const TitlePage = (props: Props) => {
@@ -17,6 +18,7 @@ export const TitlePage = (props: Props) => {
     onClickCreate = () => console.log,
     isShowButtonCreate = true,
     linkReturn = "",
+    titleButtonCreate = "",
   } = props;
 
   const navigate = useNavigate();
@@ -26,7 +28,10 @@ export const TitlePage = (props: Props) => {
         {title}
       </Text>
       {isShowButtonCreate ? (
-        <ButtonCreate onClick={onClickCreate} />
+        <ButtonCreate
+          titleButtonCreate={titleButtonCreate}
+          onClick={onClickCreate}
+        />
       ) : (
         <ButtonReturn onClick={() => navigate(linkReturn)} />
       )}

@@ -11,6 +11,8 @@ import NhaCungCapPage from "../pages/NhaCungCapPage";
 import NhanVienPage from "../pages/NhanVienPage";
 import SanPhamPage from "../pages/SanPhamPage";
 import ThuongHieuPage from "../pages/ThuongHieuPage";
+import ThuongHieuCreate from "../pages/ThuongHieuPage/ThuongHieuCreate";
+import ThuongHieuEdit from "../pages/ThuongHieuPage/ThuongHieuEdit";
 
 const routesConfig: RouteObject[] = [
   {
@@ -39,6 +41,14 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/thuonghieu",
             element: <ThuongHieuPage />,
+          },
+          {
+            path: "/admin/thuonghieu/create",
+            element: <ThuongHieuCreate />,
+          },
+          {
+            path: "/admin/thuonghieu/:math",
+            element: <ThuongHieuEdit />,
           },
           {
             path: "/admin/nhanvien",

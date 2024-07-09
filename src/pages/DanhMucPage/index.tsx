@@ -109,6 +109,7 @@ const DanhMucPage = () => {
       <Flex direction={"column"} gap={10}>
         <TitlePage
           title={"Danh mục sản phẩm"}
+          titleButtonCreate="Thêm danh mục"
           onClickCreate={() => {
             navigate("/admin/danhmuc/create");
           }}

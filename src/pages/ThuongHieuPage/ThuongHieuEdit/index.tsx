@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-import { DanhMucService } from "../../../api/danhmuc";
+import { ThuongHieuService } from "../../../api/thuonghieu";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
-import { DanhMucFormType } from "../../../types/danhmuc";
-import { DanhMucForm } from "../DanhMucForm";
-import { validationDanhMuc } from "../ValidationDanhMuc";
+import { ThuongHieuFormType } from "../../../types/thuonghieu";
+import { ThuongHieuForm } from "../ThuongHieuForm";
+import { validationThuongHieu } from "../ValidationThuongHieu";
 
-export const DanhMucEdit = () => {
+export const ThuongHieuEdit = () => {
   const toast = useToastCustom();
-  const { madm: madmParams } = useParams();
+  const { math: mathParams } = useParams();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -23,41 +23,41 @@ export const DanhMucEdit = () => {
     control,
     setValue,
     formState: { errors },
-  } = useForm<DanhMucFormType>({
+  } = useForm<ThuongHieuFormType>({
     mode: "onChange",
-    resolver: yupResolver(validationDanhMuc),
+    resolver: yupResolver(validationThuongHieu),
     defaultValues: {
-      madm: "",
-      tendm: "",
+      math: "",
+      tenth: "",
     },
   });
 
   useEffect(() => {
-    if (!madmParams) return;
+    if (!mathParams) return;
 
     const fetchData = async () => {
-      const response = await DanhMucService.getDetailDanhMuc(madmParams);
-      const { madm, tendm } = response.data;
+      const response = await ThuongHieuService.getDetailThuongHieu(mathParams);
+      const { math, tenth } = response.data;
 
-      setValue("madm", madm);
-      setValue("tendm", tendm);
+      setValue("math", math);
+      setValue("tenth", tenth);
       setIsLoading(false);
     };
     fetchData();
-  }, [madmParams]);
+  }, [mathParams]);
 
-  const onSubmit = async (data: DanhMucFormType) => {
+  const onSubmit = async (data: ThuongHieuFormType) => {
     try {
-      await DanhMucService.updateDanhMuc(data.madm, data);
+      await ThuongHieuService.updateThuongHieu(data.math, data);
 
       toast({
-        title: "Update danh mục",
-        description: "Update danh mục thành công!",
+        title: "Update thương hiệu",
+        description: "Update thương hiệu thành công!",
         status: "success",
       });
     } catch (error) {
       toast({
-        title: "Update danh mục",
+        title: "Update thương hiệu",
         description: "Đã xảy ra lỗi, vui lòng thử lại sau!",
         status: "error",
       });
@@ -80,12 +80,12 @@ export const DanhMucEdit = () => {
     }
 
     return (
-      <DanhMucForm
+      <ThuongHieuForm
         control={control}
         errors={errors}
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
-        titleButton="Cập nhật danh mục"
+        titleButton="Cập nhật thương hiệu"
         isEdit
       />
     );
@@ -94,12 +94,14 @@ export const DanhMucEdit = () => {
   return (
     <PageWrapper>
       <TitlePage
-        linkReturn={"/admin/danhmuc"}
+        linkReturn={"/admin/thuonghieu"}
         isShowButtonCreate={false}
-        title="Update danh mục"
+        title="Update thương hiệu"
       />
 
       {renderForm()}
     </PageWrapper>
   );
 };
+
+export default ThuongHieuEdit;
