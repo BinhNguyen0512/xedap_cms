@@ -17,7 +17,7 @@ const listSidebar: SidebarType[] = [
     id: "danh-sach-danh-muc",
   },
   {
-    link: "/admin/cungcap",
+    link: "/admin/nhacungcap",
     name: "Nhà cung cấp",
     id: "danh-sach-nha-cung-cap",
   },
