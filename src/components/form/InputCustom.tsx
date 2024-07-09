@@ -17,15 +17,24 @@ interface Props {
   label?: string;
   isRequired?: boolean;
   defaultValue?: string | number;
+  disabled?: boolean;
 }
 
 export const InputCustom = (props: Props) => {
-  const { label, isRequired, errors, control, name, defaultValue } = props;
+  const {
+    label,
+    isRequired,
+    errors,
+    control,
+    name,
+    defaultValue,
+    disabled = false,
+  } = props;
   return (
     <FormControl isRequired={isRequired} isInvalid={!!errors[name]}>
       {label && <FormLabel mb={"4px"}>{label}</FormLabel>}
       <Controller
-        render={({ field }) => <Input {...field} />}
+        render={({ field }) => <Input disabled={disabled} {...field} />}
         control={control}
         name={name}
         defaultValue={defaultValue}

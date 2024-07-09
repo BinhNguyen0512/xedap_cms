@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter(routesConfig);
 
 root.render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>

@@ -54,6 +54,8 @@ const LoginPage = () => {
       setMessage("Tài khoản hoặc mật khẩu không đúng!");
       return;
     }
+
+    navigate("/admin/danhmuc");
   };
 
   return (

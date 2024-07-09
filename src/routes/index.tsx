@@ -1,7 +1,16 @@
 import { RouteObject } from "react-router-dom";
 
 import App from "../App";
+import { DefaultLayout } from "../components/ui/DefaultLayout";
+import DanhMucPage from "../pages/DanhMucPage";
+import { DanhMucCreate } from "../pages/DanhMucPage/DanhMucCreate";
+import { DanhMucEdit } from "../pages/DanhMucPage/DanhMucEdit";
+import KhachHangPage from "../pages/KhachHangPage";
 import LoginPage from "../pages/LoginPage";
+import NhaCungCapPage from "../pages/NhaCungCapPage";
+import NhanVienPage from "../pages/NhanVienPage";
+import SanPhamPage from "../pages/SanPhamPage";
+import ThuongHieuPage from "../pages/ThuongHieuPage";
 
 const routesConfig: RouteObject[] = [
   {
@@ -11,7 +20,45 @@ const routesConfig: RouteObject[] = [
   {
     path: "/",
     element: <App />,
-    children: [],
+    children: [
+      {
+        element: <DefaultLayout />,
+        children: [
+          {
+            path: "/admin/danhmuc",
+            element: <DanhMucPage />,
+          },
+          {
+            path: "/admin/danhmuc/create",
+            element: <DanhMucCreate />,
+          },
+          {
+            path: "/admin/danhmuc/:madm",
+            element: <DanhMucEdit />,
+          },
+          {
+            path: "/admin/thuonghieu",
+            element: <ThuongHieuPage />,
+          },
+          {
+            path: "/admin/nhanvien",
+            element: <NhanVienPage />,
+          },
+          {
+            path: "/admin/khachhang",
+            element: <KhachHangPage />,
+          },
+          {
+            path: "/admin/cungcap",
+            element: <NhaCungCapPage />,
+          },
+          {
+            path: "/admin/sanpham",
+            element: <SanPhamPage />,
+          },
+        ],
+      },
+    ],
   },
 ];
 

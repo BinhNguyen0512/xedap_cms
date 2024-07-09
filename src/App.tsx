@@ -1,11 +1,11 @@
 import { Box, Flex } from "@chakra-ui/react";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <Flex direction={"column"}>
-      <Box>1</Box>
-      <Box>2</Box>
-    </Flex>
+    <Box>
+      <Outlet />
+    </Box>
   );
 }
 
