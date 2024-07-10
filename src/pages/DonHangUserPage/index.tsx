@@ -22,6 +22,8 @@ import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
 import { selectIsLoading, selectListDonHang } from "../../stores/donhang";
 import { getListDonHang } from "../../stores/donhang/donhang.thunk";
 import { DonHangType } from "../../types/donhang";
+import { ModalCTGH } from "./ModalCTDH";
+import { ModalDCGH } from "./ModalDCGH";
 import { ModalTrangThai } from "./ModalTrangThai";
 
 export const listOptionTrangThai: OptionSelect[] = [
@@ -171,8 +173,32 @@ const DonHangUserPage = () => {
                   <Td>{(donhang.giaohang && donhang.giaohang.hoten) || ""}</Td>
                   <Td>{donhang.khachhang.makh}</Td>
                   <Td>{donhang.khachhang.hoTen || ""}</Td>
-                  <Td>Xem sản phẩm</Td>
-                  <Td>Xem địa chỉ</Td>
+                  <Td>
+                    <Button
+                      color={"#5998e3"}
+                      _hover={{
+                        background: "transparent",
+                      }}
+                      onClick={() => {
+                        setIsOpenModalCTDH(true);
+                      }}
+                    >
+                      Xem sản phẩm
+                    </Button>
+                  </Td>
+                  <Td>
+                    <Button
+                      color={"#5998e3"}
+                      _hover={{
+                        background: "transparent",
+                      }}
+                      onClick={() => {
+                        setIsOpenModalDCGH(true);
+                      }}
+                    >
+                      Xem địa chỉ
+                    </Button>
+                  </Td>
                 </Tr>
               ))}
             </Tbody>
@@ -195,13 +221,35 @@ const DonHangUserPage = () => {
         </Flex>
       </PageWrapper>
 
-      <ModalTrangThai
-        isOpen={isOpenModalTrangThai}
-        onClose={() => {
-          setIsOpenModalTrangThai(false);
-        }}
-        selectedDH={selectedDH}
-      />
+      {selectedDH.madh && (
+        <ModalTrangThai
+          isOpen={isOpenModalTrangThai}
+          onClose={() => {
+            setIsOpenModalTrangThai(false);
+          }}
+          selectedDH={selectedDH}
+        />
+      )}
+
+      {selectedDH.madh && (
+        <ModalDCGH
+          isOpen={isOpenModalDCGH}
+          onClose={() => {
+            setIsOpenModalDCGH(false);
+          }}
+          selectedDH={selectedDH}
+        />
+      )}
+
+      {selectedDH.madh && (
+        <ModalCTGH
+          isOpen={isOpenModalCTDH}
+          onClose={() => {
+            setIsOpenModalCTDH(false);
+          }}
+          selectedDH={selectedDH}
+        />
+      )}
     </>
   );
 };
