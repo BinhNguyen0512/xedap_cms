@@ -40,7 +40,7 @@ const NhaCungCapCreate = () => {
       reset();
     } catch (error) {
       toast({
-        title: "Tạo nhà cung cấp",
+        title: "Đã xảy ra lỗi, tạo nhà cung cấp thất bại",
         description: (error as any).response.data,
         status: "error",
       });

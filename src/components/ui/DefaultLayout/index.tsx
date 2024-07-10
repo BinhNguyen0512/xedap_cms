@@ -56,7 +56,7 @@ export const DefaultLayout = () => {
       <Flex gap={20}>
         <Box
           width={"280px"}
-          height={"100vh"}
+          height={"150vh"}
           backgroundColor={"#2e3836"}
           p={"32px 12px"}
         >

@@ -47,7 +47,7 @@ const NhanVienCreate = () => {
       setValue("gioitinh", "Nam");
     } catch (error) {
       toast({
-        title: "Tạo nhân viên",
+        title: "Đã xảy ra lỗi, tạo nhân viên thất bại",
         description: (error as any).response.data,
         status: "error",
       });
