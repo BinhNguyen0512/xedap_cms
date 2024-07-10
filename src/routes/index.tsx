@@ -16,6 +16,7 @@ import NhanVienCreate from "../pages/NhanVienPage/NhanVienCreate";
 import NhanVienEdit from "../pages/NhanVienPage/NhanVienEdit";
 import SanPhamPage from "../pages/SanPhamPage";
 import SanPhamCreate from "../pages/SanPhamPage/SanPhamCreate";
+import SanPhamEdit from "../pages/SanPhamPage/SanPhamEdit";
 import ThuongHieuPage from "../pages/ThuongHieuPage";
 import ThuongHieuCreate from "../pages/ThuongHieuPage/ThuongHieuCreate";
 import ThuongHieuEdit from "../pages/ThuongHieuPage/ThuongHieuEdit";
@@ -91,6 +92,10 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/sanpham/create",
             element: <SanPhamCreate />,
+          },
+          {
+            path: "/admin/sanpham/:masp",
+            element: <SanPhamEdit />,
           },
           {
             path: "/admin/donhanguser",

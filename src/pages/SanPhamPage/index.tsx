@@ -22,10 +22,7 @@ import { PageWrapper } from "../../components/ui/PageWrapper";
 import { TitlePage } from "../../components/ui/TitlePage";
 import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
 import { useToastCustom } from "../../hooks/useToastCustom";
-import sanpham, {
-  selectIsLoading,
-  selectListSanPham,
-} from "../../stores/sanpham";
+import { selectIsLoading, selectListSanPham } from "../../stores/sanpham";
 import { getListSanPham } from "../../stores/sanpham/sanpham.thunk";
 import { SanPhamType } from "../../types/sanpham";
 

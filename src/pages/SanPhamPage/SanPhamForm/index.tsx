@@ -4,16 +4,19 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Image,
   Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import {
   Control,
   FieldErrors,
+  UseFormGetValues,
   UseFormHandleSubmit,
   UseFormRegister,
   UseFormSetValue,
 } from "react-hook-form";
+import { useParams } from "react-router-dom";
 
 import { InputCustom } from "../../../components/form/InputCustom";
 import {
@@ -39,6 +42,7 @@ interface Props {
   setValue: UseFormSetValue<AddSanPhamFormType>;
   register: UseFormRegister<AddSanPhamFormType>;
   isLoading?: boolean;
+  getValues?: UseFormGetValues<AddSanPhamFormType>;
 }
 
 export const SanPhamForm = (props: Props) => {
@@ -52,7 +56,9 @@ export const SanPhamForm = (props: Props) => {
     register,
     setValue,
     isLoading,
+    getValues,
   } = props;
+  const { masp: maspParams } = useParams();
 
   const listTH = useAppSelector(selectListThuongHieu);
   const listDM = useAppSelector(selectListDanhMuc);
@@ -64,10 +70,11 @@ export const SanPhamForm = (props: Props) => {
   const [listOptionNCC, setListOptionNCC] = useState<OptionSelect[]>([]);
 
   useEffect(() => {
+    if (maspParams) return;
     dispatch(getListThuongHieu());
     dispatch(getListDanhMuc());
     dispatch(getListNCC());
-  }, []);
+  }, [maspParams]);
 
   useEffect(() => {
     const listOption = listTH.map((th) => {
@@ -124,7 +131,6 @@ export const SanPhamForm = (props: Props) => {
             label="Tên sản phẩm"
             errors={errors}
             isRequired
-            disabled={isEdit}
           />
 
           <InputCustom
@@ -133,7 +139,6 @@ export const SanPhamForm = (props: Props) => {
             label="Số lượng"
             errors={errors}
             isRequired
-            disabled={isEdit}
           />
 
           <InputCustom
@@ -142,7 +147,6 @@ export const SanPhamForm = (props: Props) => {
             label="Đon giá"
             errors={errors}
             isRequired
-            disabled={isEdit}
           />
 
           <InputCustom
@@ -151,13 +155,22 @@ export const SanPhamForm = (props: Props) => {
             label="Chi tiết sản phẩm"
             errors={errors}
             isRequired
-            disabled={isEdit}
           />
 
           <FormControl isRequired isInvalid={!!errors["image"]}>
             <FormLabel mb={"4px"}>Hình 1</FormLabel>
 
-            <input type="file" {...register("image")} />
+            <input type="file" accept="image/*" {...register("image")} />
+
+            {isEdit && (
+              <Image
+                src={(getValues && getValues("image")) || ""}
+                alt=""
+                height={150}
+                objectFit={"contain"}
+                w={150}
+              />
+            )}
 
             <FormErrorMessage mt={"4px"}>
               {!!errors["image"] && (
@@ -169,7 +182,16 @@ export const SanPhamForm = (props: Props) => {
           <FormControl isRequired isInvalid={!!errors["image2"]}>
             <FormLabel mb={"4px"}>Hình 2</FormLabel>
 
-            <input type="file" {...register("image2")} />
+            <input type="file" accept="image/*" {...register("image2")} />
+            {isEdit && (
+              <Image
+                src={(getValues && getValues("image2")) || ""}
+                alt=""
+                height={150}
+                objectFit={"contain"}
+                w={150}
+              />
+            )}
 
             <FormErrorMessage mt={"4px"}>
               {!!errors["image2"] && (
@@ -181,7 +203,16 @@ export const SanPhamForm = (props: Props) => {
           <FormControl isRequired isInvalid={!!errors["image3"]}>
             <FormLabel mb={"4px"}>Hình 3</FormLabel>
 
-            <input type="file" {...register("image3")} />
+            <input type="file" accept="image/*" {...register("image3")} />
+            {isEdit && (
+              <Image
+                src={(getValues && getValues("image3")) || ""}
+                alt=""
+                height={150}
+                objectFit={"contain"}
+                w={150}
+              />
+            )}
 
             <FormErrorMessage mt={"4px"}>
               {!!errors["image3"] && (
