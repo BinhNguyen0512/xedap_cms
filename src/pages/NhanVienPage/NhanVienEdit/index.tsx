@@ -41,7 +41,8 @@ const NhanVienEdit = () => {
     if (!manvParams) return;
 
     const fetchData = async () => {
-      const response = await NhanVienService.getDetailNhanVien(manvParams);
+      const response =
+        await NhanVienService.getDetailNhanVienByMaNV(manvParams);
       const { manv, hoten, gioitinh, sdt, diachi, email, luong, taikhoan } =
         response.data;
 

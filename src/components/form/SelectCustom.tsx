@@ -2,14 +2,13 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Input,
   Select,
   Text,
 } from "@chakra-ui/react";
 import { Control, Controller, FieldErrors } from "react-hook-form";
 
 export interface OptionSelect {
-  value: string;
+  value: string | number;
   label: string;
 }
 

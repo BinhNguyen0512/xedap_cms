@@ -7,6 +7,9 @@ export const NhanVienService = {
   updateNhanVien: (manv: string, formData: AddNhanVienFormType) =>
     axiosClient.put(`/nhanvien/${manv}`, formData),
   getAllNhanVien: () => axiosClient.get("/nhanvien"),
-  getDetailNhanVien: (manv: string) => axiosClient.get(`/nhanvien/${manv}`),
+  getDetailNhanVienByMaNV: (manv: string) =>
+    axiosClient.get(`/nhanvien/${manv}`),
+  getDetailNhanVienByUsername: (username: string) =>
+    axiosClient.get(`/nhanvien/profile/${username}`),
   deleteNhanVien: (manv: string) => axiosClient.delete(`/nhanvien/${manv}`),
 };

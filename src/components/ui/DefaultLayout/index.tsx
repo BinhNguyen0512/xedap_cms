@@ -1,8 +1,15 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
+import avatar from "../../../assets/images/avatar.png";
+import { useAppDispatch, useAppSelector } from "../../../hooks/app-hook";
+import { selectUsername } from "../../../stores/auth";
+import { selectDetailNV, selectIsLoading } from "../../../stores/nhanvien";
+import { getDetailNVByUsername } from "../../../stores/nhanvien/nhanvien.thunk";
 import { Header } from "../Header";
+import { Loading } from "../Loading";
 
 interface SidebarType {
   link: string;
@@ -49,19 +56,52 @@ const listSidebar: SidebarType[] = [
 ];
 
 export const DefaultLayout = () => {
+  const username =
+    useAppSelector(selectUsername) || localStorage.getItem("username");
+  const detailNV = useAppSelector(selectDetailNV);
+
+  const isLoading = useAppSelector(selectIsLoading);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!username) return;
+    dispatch(getDetailNVByUsername(username));
+  }, [username]);
+
   return (
     <>
       <Header />
 
       <Flex gap={20}>
         <Box
-          width={"280px"}
+          minW={"280px"}
           height={"180vh"}
           backgroundColor={"#2e3836"}
           p={"32px 12px"}
         >
-          <Flex direction={"column"} gap={20}>
-            <Box>Avatart</Box>
+          <Flex direction={"column"} gap={10}>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <Flex
+                justifyContent={"center"}
+                alignItems={"center"}
+                gap={5}
+                direction={"column"}
+              >
+                <Box maxH={200} maxW={200}>
+                  <Image src={avatar} alt="" />
+                </Box>
+                <Text
+                  textAlign={"center"}
+                  color={"white"}
+                  fontWeight={700}
+                  fontSize={24}
+                >
+                  {detailNV.hoten}
+                </Text>
+              </Flex>
+            )}
             <Flex direction={"column"} gap={10}>
               {listSidebar.map((sidebar) => (
                 <Link

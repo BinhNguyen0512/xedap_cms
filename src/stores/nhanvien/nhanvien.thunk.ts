@@ -15,3 +15,18 @@ export const getListNV = createAsyncThunk(
     // eslint-disable-next-line prettier/prettier
   }
 );
+
+export const getDetailNVByUsername = createAsyncThunk(
+  "nhanvien/getDetailNV",
+  async (username: string, thunkApi) => {
+    try {
+      const response =
+        await NhanVienService.getDetailNhanVienByUsername(username);
+
+      return response.data;
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+    }
+    // eslint-disable-next-line prettier/prettier
+  }
+);

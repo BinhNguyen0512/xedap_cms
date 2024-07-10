@@ -3,7 +3,7 @@ import { NoInfer } from "react-redux";
 
 import { NhanVienType } from "../../types/nhanvien";
 import { NhanVienStateType } from ".";
-import { getListNV } from "./nhanvien.thunk";
+import { getDetailNVByUsername, getListNV } from "./nhanvien.thunk";
 
 const extraReducers = (
   // eslint-disable-next-line prettier/prettier
@@ -30,6 +30,31 @@ const extraReducers = (
     state.isLoading = false;
     // eslint-disable-next-line prettier/prettier
   });
+
+  builder.addCase(getDetailNVByUsername.pending, (state: NhanVienStateType) => {
+    state.isLoading = true;
+  });
+  builder.addCase(
+    getDetailNVByUsername.fulfilled,
+    (
+      state: NhanVienStateType,
+      // eslint-disable-next-line prettier/prettier
+      action: PayloadAction<NhanVienType>
+    ) => {
+      state.isLoading = false;
+      if (!action.payload) return;
+
+      state.detailNhanVien = action.payload;
+      // eslint-disable-next-line prettier/prettier
+    }
+  );
+  builder.addCase(
+    getDetailNVByUsername.rejected,
+    (state: NhanVienStateType) => {
+      state.isLoading = false;
+      // eslint-disable-next-line prettier/prettier
+    }
+  );
 };
 
 export default extraReducers;
