@@ -1,7 +1,7 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import avatar from "../../../assets/images/avatar.png";
 import { useAppDispatch, useAppSelector } from "../../../hooks/app-hook";
@@ -62,8 +62,10 @@ export const DefaultLayout = () => {
 
   const isLoading = useAppSelector(selectIsLoading);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (detailNV.manv) return;
     if (!username) return;
     dispatch(getDetailNVByUsername(username));
   }, [username]);
@@ -104,19 +106,23 @@ export const DefaultLayout = () => {
             )}
             <Flex direction={"column"} gap={10}>
               {listSidebar.map((sidebar) => (
-                <Link
+                <Button
                   key={sidebar.id}
-                  href={sidebar.link}
+                  background={"transparent"}
                   _hover={{
+                    background: "transparent",
                     transition: "all 0.3s ease",
                     scale: 1.5,
                   }}
                   color={"white"}
                   fontWeight={700}
                   fontSize={18}
+                  onClick={() => {
+                    navigate(sidebar.link);
+                  }}
                 >
                   {sidebar.name}
-                </Link>
+                </Button>
               ))}
             </Flex>
           </Flex>
