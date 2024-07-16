@@ -3,5 +3,6 @@ export interface NhaCungCapFormType {
   tenncc: string;
   diachi: string;
   email: string;
+  slug?: string;
   sdt: string;
 }

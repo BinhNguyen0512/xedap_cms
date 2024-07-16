@@ -3,12 +3,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import slugify from "slugify";
 
 import { ThuongHieuService } from "../../../api/thuonghieu";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
 import { ThuongHieuFormType } from "../../../types/thuonghieu";
+import { toLowerCaseNonAccentVietnamese } from "../../SanPhamPage/SanPhamCreate";
 import { ThuongHieuForm } from "../ThuongHieuForm";
 import { validationThuongHieu } from "../ValidationThuongHieu";
 
@@ -48,7 +50,12 @@ export const ThuongHieuEdit = () => {
 
   const onSubmit = async (data: ThuongHieuFormType) => {
     try {
-      await ThuongHieuService.updateThuongHieu(data.math, data);
+      await ThuongHieuService.updateThuongHieu(data.math, {
+        ...data,
+        slug: slugify(
+          toLowerCaseNonAccentVietnamese(data.tenth) || "",
+        ).toLowerCase(),
+      });
 
       toast({
         title: "Update thương hiệu",

@@ -1,11 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import slugify from "slugify";
 
 import { NhaCungCapService } from "../../../api/nhacungcap";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
 import { NhaCungCapFormType } from "../../../types/nhacungcap";
+import { toLowerCaseNonAccentVietnamese } from "../../SanPhamPage/SanPhamCreate";
 import { NhaCungCapForm } from "../NhaCungCapForm";
 import { validationNhaCungCap } from "../ValidationNhaCungCap";
 
@@ -30,7 +32,12 @@ const NhaCungCapCreate = () => {
 
   const onSubmit = async (data: NhaCungCapFormType) => {
     try {
-      const response = await NhaCungCapService.createNhaCungCap(data);
+      const response = await NhaCungCapService.createNhaCungCap({
+        ...data,
+        slug: slugify(
+          toLowerCaseNonAccentVietnamese(data.tenncc) || "",
+        ).toLowerCase(),
+      });
 
       toast({
         title: "Tạo nhà cung cấp",

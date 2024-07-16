@@ -3,12 +3,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import slugify from "slugify";
 
 import { NhaCungCapService } from "../../../api/nhacungcap";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
 import { NhaCungCapFormType } from "../../../types/nhacungcap";
+import { toLowerCaseNonAccentVietnamese } from "../../SanPhamPage/SanPhamCreate";
 import { NhaCungCapForm } from "../NhaCungCapForm";
 import { validationNhaCungCap } from "../ValidationNhaCungCap";
 
@@ -54,7 +56,12 @@ const NhaCungCapEdit = () => {
 
   const onSubmit = async (data: NhaCungCapFormType) => {
     try {
-      await NhaCungCapService.updateNhaCungCap(data.mancc, data);
+      await NhaCungCapService.updateNhaCungCap(data.mancc, {
+        ...data,
+        slug: slugify(
+          toLowerCaseNonAccentVietnamese(data.tenncc) || "",
+        ).toLowerCase(),
+      });
 
       toast({
         title: "Update nhà cung cấp",

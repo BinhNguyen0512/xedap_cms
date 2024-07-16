@@ -1,11 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import slugify from "slugify";
 
 import { ThuongHieuService } from "../../../api/thuonghieu";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
 import { ThuongHieuFormType } from "../../../types/thuonghieu";
+import { toLowerCaseNonAccentVietnamese } from "../../SanPhamPage/SanPhamCreate";
 import { ThuongHieuForm } from "../ThuongHieuForm";
 import { validationThuongHieu } from "../ValidationThuongHieu";
 
@@ -27,7 +29,12 @@ const ThuongHieuCreate = () => {
 
   const onSubmit = async (data: ThuongHieuFormType) => {
     try {
-      const response = await ThuongHieuService.createThuongHieu(data);
+      const response = await ThuongHieuService.createThuongHieu({
+        ...data,
+        slug: slugify(
+          toLowerCaseNonAccentVietnamese(data.tenth) || "",
+        ).toLowerCase(),
+      });
 
       toast({
         title: "Tạo thương hiệu",

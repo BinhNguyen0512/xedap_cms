@@ -1,11 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import slugify from "slugify";
 
 import { DanhMucService } from "../../../api/danhmuc";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
 import { DanhMucFormType } from "../../../types/danhmuc";
+import { toLowerCaseNonAccentVietnamese } from "../../SanPhamPage/SanPhamCreate";
 import { DanhMucForm } from "../DanhMucForm";
 import { validationDanhMuc } from "../ValidationDanhMuc";
 
@@ -27,7 +29,12 @@ const DanhMucCreate = () => {
 
   const onSubmit = async (data: DanhMucFormType) => {
     try {
-      const response = await DanhMucService.createDanhMuc(data);
+      const response = await DanhMucService.createDanhMuc({
+        ...data,
+        slug: slugify(
+          toLowerCaseNonAccentVietnamese(data.tendm) || "",
+        ).toLowerCase(),
+      });
 
       toast({
         title: "Tạo danh mục",

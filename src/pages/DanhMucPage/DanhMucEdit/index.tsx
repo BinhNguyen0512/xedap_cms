@@ -3,12 +3,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import slugify from "slugify";
 
 import { DanhMucService } from "../../../api/danhmuc";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useToastCustom } from "../../../hooks/useToastCustom";
 import { DanhMucFormType } from "../../../types/danhmuc";
+import { toLowerCaseNonAccentVietnamese } from "../../SanPhamPage/SanPhamCreate";
 import { DanhMucForm } from "../DanhMucForm";
 import { validationDanhMuc } from "../ValidationDanhMuc";
 
@@ -48,7 +50,12 @@ const DanhMucEdit = () => {
 
   const onSubmit = async (data: DanhMucFormType) => {
     try {
-      await DanhMucService.updateDanhMuc(data.madm, data);
+      await DanhMucService.updateDanhMuc(data.madm, {
+        ...data,
+        slug: slugify(
+          toLowerCaseNonAccentVietnamese(data.tendm) || "",
+        ).toLowerCase(),
+      });
 
       toast({
         title: "Update danh mục",
