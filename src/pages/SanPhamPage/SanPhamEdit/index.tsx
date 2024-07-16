@@ -18,6 +18,7 @@ import { getListNCC } from "../../../stores/nhacungcap/nhacungcap.thunk";
 import { selectListThuongHieu } from "../../../stores/thuonghieu";
 import { getListThuongHieu } from "../../../stores/thuonghieu/thuonghieu.thunk";
 import { AddSanPhamFormType } from "../../../types/sanpham";
+import { toLowerCaseNonAccentVietnamese } from "../SanPhamCreate";
 import { SanPhamForm } from "../SanPhamForm";
 import { validationSanPham } from "../ValidationSanPham";
 
@@ -162,7 +163,9 @@ const SanPhamEdit = () => {
         image,
         image2,
         image3,
-        slug: slugify(data.tensp || "").toLowerCase(),
+        slug: slugify(
+          toLowerCaseNonAccentVietnamese(data.tensp) || "",
+        ).toLowerCase(),
       });
 
       toast({
