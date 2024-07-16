@@ -7,3 +7,7 @@ const axiosClient: AxiosInstance = axios.create({
 });
 
 export default axiosClient;
+
+//tồn kho lâu năm, tồn kho mới nhập
+//ngày hết hạn trong sản phẩm => hiển thi danh sách => Lọc theo tháng
+// Lọc theo tự động hạn

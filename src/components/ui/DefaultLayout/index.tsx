@@ -65,10 +65,10 @@ export const DefaultLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (detailNV.manv) return;
+    if (detailNV.manv !== "") return;
     if (!username) return;
     dispatch(getDetailNVByUsername(username));
-  }, [username]);
+  }, [username, detailNV.manv]);
 
   return (
     <>

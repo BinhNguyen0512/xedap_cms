@@ -44,7 +44,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!username) return;
-    navigate("/");
+    navigate("/admin/danhmuc");
   }, [username]);
 
   const onSubmit = async (data: LoginFormType) => {
