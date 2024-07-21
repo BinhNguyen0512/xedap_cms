@@ -1,11 +1,17 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { resetAuth } from "../../../stores/auth";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignOut = () => {
     localStorage.clear();
+    dispatch(resetAuth());
+
     navigate("/admin/login");
   };
   return (

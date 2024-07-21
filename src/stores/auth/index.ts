@@ -20,11 +20,15 @@ export const initialState: AuthStateType = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    resetAuth: () => initialState,
+  },
   extraReducers,
 });
 
 export const selectUsername = (state: ApplicationRootState) =>
   state.auth.username;
+
+export const { resetAuth } = authSlice.actions;
 
 export default authSlice.reducer;

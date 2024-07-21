@@ -6,16 +6,15 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../../components/ui/Loading";
 import { PageWrapper } from "../../components/ui/PageWrapper";
-import { TitlePage } from "../../components/ui/TitlePage";
 import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
 import { selectIsLoading, selectListKH } from "../../stores/khachhang";
 import { getListKH } from "../../stores/khachhang/khachhang.thunk";
@@ -25,8 +24,6 @@ const KhachHangPage = () => {
   const listKH = useAppSelector(selectListKH);
   const isLoading = useAppSelector(selectIsLoading);
   const dispatch = useAppDispatch();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getListKH());
@@ -80,13 +77,11 @@ const KhachHangPage = () => {
   return (
     <PageWrapper>
       <Flex direction={"column"} gap={10}>
-        <TitlePage
-          titleButtonCreate="Thêm nhân viên"
-          title={"Danh sách nhân viên"}
-          onClickCreate={() => {
-            navigate("/admin/khachhang/create");
-          }}
-        />
+        <Flex direction={"column"} gap={10}>
+          <Text fontWeight={700} fontSize={24}>
+            Danh sách khách hàng
+          </Text>
+        </Flex>
 
         {renderData()}
       </Flex>
