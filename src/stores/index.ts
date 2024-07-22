@@ -7,6 +7,7 @@ import donhangReducer from "./donhang";
 import khachhangReducer from "./khachhang";
 import nhacungcapReducer from "./nhacungcap";
 import nhanvienReducer from "./nhanvien";
+import phieunhapReducer from "./phieunhap";
 import sanphamReducer from "./sanpham";
 import thuonghieuReducer from "./thuonghieu";
 
@@ -20,6 +21,7 @@ const rootReducers = {
   sanpham: sanphamReducer,
   donhang: donhangReducer,
   dondathang: dondathangReducer,
+  phieunhap: phieunhapReducer,
 };
 
 const store = configureStore({

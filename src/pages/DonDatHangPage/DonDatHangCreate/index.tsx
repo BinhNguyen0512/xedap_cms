@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { DonDatHangService } from "../../../api/dondathang";
+import { PhieuNhapService } from "../../../api/phieunhap";
 import { PageWrapper } from "../../../components/ui/PageWrapper";
 import { TitlePage } from "../../../components/ui/TitlePage";
 import { useAppSelector } from "../../../hooks/app-hook";
@@ -39,6 +40,12 @@ const DonDatHangCreate = () => {
   const onSubmit = async (data: DonDatHangFormType) => {
     try {
       await DonDatHangService.createDonDatHang({ ...data, manv: profile.manv });
+      await PhieuNhapService.createPhieuNhap({
+        manv: profile.manv,
+        maddh: data.maddh,
+        ds: data.ds as any,
+        mapn: "",
+      });
       setListDS([]);
       toast({
         title: "Tạo danh sách đơn đặt hàng",

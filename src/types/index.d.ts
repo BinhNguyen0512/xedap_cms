@@ -5,6 +5,7 @@ import { DonHangStateType } from "../stores/donhang";
 import { KhachHangStateType } from "../stores/khachhang";
 import { NhaCungCapStateType } from "../stores/nhacungcap";
 import { NhanVienStateType } from "../stores/nhanvien";
+import { PhieuNhapStateType } from "../stores/phieunhap";
 import { SanPhamStateType } from "../stores/sanpham";
 import { ThuongHieuStateType } from "../stores/thuonghieu";
 
@@ -20,4 +21,5 @@ interface ApplicationRootState {
   readonly sanpham: SanPhamStateType;
   readonly donhang: DonHangStateType;
   readonly dondathang: DonDatHangStateType;
+  readonly phieunhap: PhieuNhapStateType;
 }
