@@ -1,5 +1,4 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
-import { Link } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
@@ -57,6 +56,11 @@ const listSidebar: SidebarType[] = [
     link: "/admin/dondathang",
     name: "Danh sách ĐĐH",
     id: "danh-sach-don-dat-hang",
+  },
+  {
+    link: "/admin/phieunhap",
+    name: "Danh sách phiếu nhập",
+    id: "danh-sach-phieu-nhap",
   },
 ];
 

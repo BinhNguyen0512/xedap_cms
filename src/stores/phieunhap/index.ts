@@ -21,7 +21,7 @@ const phieunhapSlice = createSlice({
   extraReducers,
 });
 
-export const selectListDonDatHang = (state: ApplicationRootState) =>
+export const selectListPhieuNhap = (state: ApplicationRootState) =>
   state.phieunhap.listPhieuNhap;
 
 export const selectIsLoading = (state: ApplicationRootState) =>

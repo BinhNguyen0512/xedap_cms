@@ -21,7 +21,7 @@ export interface ID_CT_PhieuNhap {
 }
 
 export interface PhieuNhapType {
-  mddh: DonDatHangType;
+  dondathang: DonDatHangType;
   ngaydat: string;
   mapn: string;
   nhanvien: NhanVienType;
