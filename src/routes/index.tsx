@@ -5,6 +5,8 @@ import { DefaultLayout } from "../components/ui/DefaultLayout";
 import DanhMucPage from "../pages/DanhMucPage";
 import DanhMucCreate from "../pages/DanhMucPage/DanhMucCreate";
 import DanhMucEdit from "../pages/DanhMucPage/DanhMucEdit";
+import { DonDatHangPage } from "../pages/DonDatHangPage";
+import DonDatHangCreate from "../pages/DonDatHangPage/DonDatHangCreate";
 import DonHangUserPage from "../pages/DonHangUserPage";
 import KhachHangPage from "../pages/KhachHangPage";
 import LoginPage from "../pages/LoginPage";
@@ -100,6 +102,14 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/donhanguser",
             element: <DonHangUserPage />,
+          },
+          {
+            path: "/admin/dondathang",
+            element: <DonDatHangPage />,
+          },
+          {
+            path: "/admin/dondathang/create",
+            element: <DonDatHangCreate />,
           },
         ],
       },

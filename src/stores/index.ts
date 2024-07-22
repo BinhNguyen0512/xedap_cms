@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import authReducer from "./auth";
 import danhmucReducer from "./danhmuc";
+import dondathangReducer from "./dondathang";
 import donhangReducer from "./donhang";
 import khachhangReducer from "./khachhang";
 import nhacungcapReducer from "./nhacungcap";
@@ -18,6 +19,7 @@ const rootReducers = {
   khachhang: khachhangReducer,
   sanpham: sanphamReducer,
   donhang: donhangReducer,
+  dondathang: dondathangReducer,
 };
 
 const store = configureStore({

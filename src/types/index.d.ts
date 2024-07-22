@@ -1,5 +1,6 @@
 import { AuthStateType } from "../stores/auth";
 import { DanhMucStateType } from "../stores/danhmuc";
+import { DonDatHangStateType } from "../stores/dondathang";
 import { DonHangStateType } from "../stores/donhang";
 import { KhachHangStateType } from "../stores/khachhang";
 import { NhaCungCapStateType } from "../stores/nhacungcap";
@@ -18,4 +19,5 @@ interface ApplicationRootState {
   readonly khachhang: KhachHangStateType;
   readonly sanpham: SanPhamStateType;
   readonly donhang: DonHangStateType;
+  readonly dondathang: DonDatHangStateType;
 }

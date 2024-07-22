@@ -10,6 +10,7 @@ import { Control, Controller, FieldErrors } from "react-hook-form";
 export interface OptionSelect {
   value: string | number;
   label: string;
+  price?: number;
 }
 
 interface Props {

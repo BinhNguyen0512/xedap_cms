@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { InputCustom } from "../../components/form/InputCustom";
 import { InputPasswordCustom } from "../../components/form/InputPasswordCustom";
 import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
+import { useToastCustom } from "../../hooks/useToastCustom";
 import { selectUsername } from "../../stores/auth";
 import { signInWithCredentials } from "../../stores/auth/auth.thunk";
 
@@ -50,8 +51,12 @@ const LoginPage = () => {
   const onSubmit = async (data: LoginFormType) => {
     const response = await dispatch(signInWithCredentials(data));
 
-    if (!response.payload) {
+    if (response?.error?.message === "Rejected") {
       setMessage("Tài khoản hoặc mật khẩu không đúng!");
+      return;
+    }
+    if (response.payload.quyen === 2) {
+      setMessage("Tài khoản không phải là admin");
       return;
     }
 

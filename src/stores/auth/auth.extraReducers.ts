@@ -16,7 +16,10 @@ const extraReducers = (
     signInWithCredentials.fulfilled,
     (state: AuthStateType, action: PayloadAction<LoginResponse>) => {
       state.isLoading = false;
+
       if (!action.payload) return;
+
+      if (action.payload.quyen === 2) return;
       state.isAuthenticated = true;
       state.username = action.payload.username;
       state.quyen = action.payload.quyen;

@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import { OptionSelect } from "../../components/form/SelectCustom";
 import { Loading } from "../../components/ui/Loading";
 import { PageWrapper } from "../../components/ui/PageWrapper";
+import { PaymentEnum } from "../../enum/payment";
 import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
 import { selectIsLoading, selectListDonHang } from "../../stores/donhang";
 import { getListDonHang } from "../../stores/donhang/donhang.thunk";
@@ -58,8 +59,8 @@ const textTrangthai = (trangthai: number) => {
 };
 
 const textHinhThucThanhThoan = (hinhthuc: number) => {
-  if (hinhthuc === 1) {
-    return "Tiền mặt";
+  if (hinhthuc === PaymentEnum.ThanhToanKhiNhanHang) {
+    return "Thanh toán khi nhận hàng";
   }
 
   return "Paypal";
