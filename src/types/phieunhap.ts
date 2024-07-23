@@ -33,3 +33,13 @@ export interface DonDatHangDetail {
   gia: number;
   sanpham: SanPhamType;
 }
+
+export interface PhieuNhapDetailType {
+  id: {
+    mapn: string;
+    masp: string;
+  };
+  soluong: number;
+  gia: number;
+  sanpham: SanPhamType;
+}

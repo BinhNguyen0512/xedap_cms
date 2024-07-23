@@ -5,6 +5,5 @@ export const PhieuNhapService = {
   createPhieuNhap: (formData: PhieuNhapFormType) =>
     axiosClient.post("/phieunhap", formData),
   getAllPhieuNhap: () => axiosClient.get("/phieunhap"),
-  //   getDetailCTDDH: (maddh: string) =>
-  //     axiosClient.get(`phieunhap/chitiet/${maddh}`),
+  getDetailCTPN: (mapn: string) => axiosClient.get(`phieunhap/detail/${mapn}`),
 };
