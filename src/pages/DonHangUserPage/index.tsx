@@ -59,7 +59,7 @@ const textTrangthai = (trangthai: number) => {
   return findTrangThai?.label || "Chưa xác nhận";
 };
 
-const textHinhThucThanhThoan = (hinhthuc: number) => {
+export const textHinhThucThanhThoan = (hinhthuc: number) => {
   if (hinhthuc === PaymentEnum.ThanhToanKhiNhanHang) {
     return "Thanh toán khi nhận hàng";
   }
