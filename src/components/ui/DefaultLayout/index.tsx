@@ -62,6 +62,11 @@ const listSidebar: SidebarType[] = [
     name: "Danh sách phiếu nhập",
     id: "danh-sach-phieu-nhap",
   },
+  {
+    link: "/admin/hoadon",
+    name: "Danh sách hoá đơn",
+    id: "danh-sach-hoa-don",
+  },
 ];
 
 export const DefaultLayout = () => {

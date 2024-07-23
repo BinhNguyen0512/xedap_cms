@@ -28,10 +28,11 @@ import { useEffect } from "react";
 import { Loading } from "../../components/ui/Loading";
 import { PageWrapper } from "../../components/ui/PageWrapper";
 import { TitlePage } from "../../components/ui/TitlePage";
+import { ConvertPrice } from "../../helpers";
 import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
-import { selectIsLoading, selectListPhieuNhap } from "../../stores/phieunhap";
-import { getListPhieuNhap } from "../../stores/phieunhap/phienhap.thunk";
-import { PhieuNhapType } from "../../types/phieunhap";
+import { selectIsLoading, selectListHoaDon } from "../../stores/hoadon";
+import { getListHoaDon } from "../../stores/hoadon/hoadon.thunk";
+import { HoaDonType } from "../../types/hoadon";
 
 Font.register({
   family: "Roboto",
@@ -51,13 +52,13 @@ Font.register({
   ],
 });
 
-const PhieuNhapPage = () => {
+const HoaDonPage = () => {
   const dispatch = useAppDispatch();
-  const listPhieuNhap = useAppSelector(selectListPhieuNhap);
+  const listHoaDon = useAppSelector(selectListHoaDon);
   const isLoading = useAppSelector(selectIsLoading);
 
   useEffect(() => {
-    dispatch(getListPhieuNhap());
+    dispatch(getListHoaDon());
   }, []);
 
   const renderData = () => {
@@ -75,25 +76,26 @@ const PhieuNhapPage = () => {
       >
         <TableContainer>
           <Table variant="striped" colorScheme="gray">
-            <TableCaption>Danh sách phiếu nhập trong hệ thống</TableCaption>
+            <TableCaption>Danh sách Hoá đơn trong hệ thống</TableCaption>
             <Thead>
               <Tr>
-                <Th>Mã PN</Th>
-                <Th>Ngày nhập</Th>
-                <Th>Mã ĐĐH</Th>
-                <Th>Nhà cung cấp</Th>
-                <Th>Nhân viên</Th>
-                <Th>Xem</Th>
+                <Th>Mã HĐơn</Th>
+                <Th>Ngày lập</Th>
+                <Th>Thành tiền</Th>
+                <Th>Mã ĐHàng</Th>
+                <Th>Họ tên</Th>
+                <Th>Email</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {listPhieuNhap.map((phieunhap: PhieuNhapType, index) => (
+              {listHoaDon.map((hoadon: HoaDonType, index) => (
                 <Tr key={index}>
-                  <Td>{phieunhap.mapn}</Td>
-                  <Td>{moment(phieunhap.ngaydat).format("DD-MM-YYYY")}</Td>
-                  <Td>{phieunhap.dondathang.mddh}</Td>
-                  <Td>{phieunhap.dondathang.nhacungcap.tenncc}</Td>
-                  <Td>{phieunhap.nhanvien.hoten}</Td>
+                  <Td>{hoadon.mahd}</Td>
+                  <Td>{moment(hoadon.ngaylap).format("DD-MM-YYYY")}</Td>
+                  <Td>{ConvertPrice(hoadon.thanhtien)}</Td>
+                  <Td>{hoadon.donhang.madh}</Td>
+                  <Td>{hoadon.donhang.khachhang.hoTen}</Td>
+                  <Td>{hoadon.donhang.khachhang.email}</Td>
                   <Td>
                     <PDFDownloadLink
                       document={<MyDocument />}
@@ -105,7 +107,7 @@ const PhieuNhapPage = () => {
                           background: "transparent",
                         }}
                       >
-                        Xuất phiếu nhập
+                        Xuất hoá đơn
                       </Button>
                     </PDFDownloadLink>
                   </Td>
@@ -121,7 +123,7 @@ const PhieuNhapPage = () => {
   return (
     <PageWrapper>
       <Flex direction={"column"} gap={10}>
-        <TitlePage title={"Danh sách phiếu nhập"} isShowButtonCreate={false} />
+        <TitlePage title={"Danh sách Hoá đơn"} isShowButtonCreate={false} />
 
         {renderData()}
       </Flex>
@@ -129,7 +131,7 @@ const PhieuNhapPage = () => {
   );
 };
 
-export default PhieuNhapPage;
+export default HoaDonPage;
 
 const styles = StyleSheet.create({
   page: { padding: 30 },

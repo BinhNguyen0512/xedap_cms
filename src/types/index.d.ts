@@ -2,6 +2,7 @@ import { AuthStateType } from "../stores/auth";
 import { DanhMucStateType } from "../stores/danhmuc";
 import { DonDatHangStateType } from "../stores/dondathang";
 import { DonHangStateType } from "../stores/donhang";
+import { HoaDonStateType } from "../stores/hoadon";
 import { KhachHangStateType } from "../stores/khachhang";
 import { NhaCungCapStateType } from "../stores/nhacungcap";
 import { NhanVienStateType } from "../stores/nhanvien";
@@ -22,4 +23,5 @@ interface ApplicationRootState {
   readonly donhang: DonHangStateType;
   readonly dondathang: DonDatHangStateType;
   readonly phieunhap: PhieuNhapStateType;
+  readonly hoadon: HoaDonStateType;
 }

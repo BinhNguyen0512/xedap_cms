@@ -8,6 +8,7 @@ import DanhMucEdit from "../pages/DanhMucPage/DanhMucEdit";
 import { DonDatHangPage } from "../pages/DonDatHangPage";
 import DonDatHangCreate from "../pages/DonDatHangPage/DonDatHangCreate";
 import DonHangUserPage from "../pages/DonHangUserPage";
+import HoaDonPage from "../pages/HoaDonPage";
 import KhachHangPage from "../pages/KhachHangPage";
 import LoginPage from "../pages/LoginPage";
 import NhaCungCapPage from "../pages/NhaCungCapPage";
@@ -115,6 +116,10 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/phieunhap",
             element: <PhieuNhapPage />,
+          },
+          {
+            path: "/admin/hoadon",
+            element: <HoaDonPage />,
           },
         ],
       },

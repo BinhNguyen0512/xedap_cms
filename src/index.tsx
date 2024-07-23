@@ -1,3 +1,5 @@
+import "@fontsource/roboto";
+
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
