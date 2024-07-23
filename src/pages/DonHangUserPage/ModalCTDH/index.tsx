@@ -4,6 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 import { DonHangService } from "../../../api/donhang";
 import { Loading } from "../../../components/ui/Loading";
 import { ModalWrapper } from "../../../components/ui/ModalWrapper";
+import { ConvertPrice } from "../../../helpers";
 import { DonHangType } from "../../../types/donhang";
 import { SanPhamType } from "../../../types/sanpham";
 
@@ -77,7 +78,7 @@ export const ModalCTGH = (props: Props) => {
                       <Text>
                         {item.masp} - {item.tensp} - x{item.soluong}
                       </Text>
-                      <Text>{item.gia} đ</Text>
+                      <Text>{ConvertPrice(item.gia)}</Text>
                     </Flex>
 
                     <Box w={"100%"} borderBottom={"1px solid #b3c3d7"} />
@@ -87,7 +88,11 @@ export const ModalCTGH = (props: Props) => {
               <Flex justifyContent={"flex-end"}>
                 <Text>
                   Tổng tiền:{" "}
-                  {listSP.map((item) => item.gia).reduce((acc, el) => acc + el)}{" "}
+                  {ConvertPrice(
+                    listSP
+                      .map((item) => item.gia)
+                      .reduce((acc, el) => acc + el),
+                  )}{" "}
                   đ
                 </Text>
               </Flex>

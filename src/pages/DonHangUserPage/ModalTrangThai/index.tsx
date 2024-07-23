@@ -79,7 +79,7 @@ export const ModalTrangThai = (props: Props) => {
 
     try {
       await DonHangService.updateDonHang({
-        hinhthucthanhtoan: selectedDH.hinhThucThanhToan,
+        hinhThucThanhToan: selectedDH.hinhThucThanhToan,
         madh: selectedDH.madh,
         manv: detailNV.manv,
         manvgh: data.manvgh ? data.manvgh : undefined,

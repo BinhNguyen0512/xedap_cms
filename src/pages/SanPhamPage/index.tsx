@@ -20,6 +20,7 @@ import { ButtonEdit } from "../../components/ui/ButtonEdit";
 import { Loading } from "../../components/ui/Loading";
 import { PageWrapper } from "../../components/ui/PageWrapper";
 import { TitlePage } from "../../components/ui/TitlePage";
+import { ConvertPrice } from "../../helpers";
 import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
 import { useToastCustom } from "../../hooks/useToastCustom";
 import { selectIsLoading, selectListSanPham } from "../../stores/sanpham";
@@ -100,7 +101,7 @@ const SanPhamPage = () => {
                   <Td>{sanpham.masp}</Td>
                   <Td>{sanpham.tensp}</Td>
                   <Td>{sanpham.soluong}</Td>
-                  <Td>{sanpham.dongia}</Td>
+                  <Td>{ConvertPrice(sanpham.dongia)}</Td>
                   <Td>{sanpham.chitietSP}</Td>
                   <Td>
                     <Image

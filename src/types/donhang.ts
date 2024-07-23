@@ -22,5 +22,5 @@ export interface UpdateDonHangFormType {
   manv?: string;
   manvgh?: string;
   trangthai: number;
-  hinhthucthanhtoan: number;
+  hinhThucThanhToan: number;
 }

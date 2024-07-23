@@ -19,6 +19,7 @@ import { OptionSelect } from "../../components/form/SelectCustom";
 import { Loading } from "../../components/ui/Loading";
 import { PageWrapper } from "../../components/ui/PageWrapper";
 import { PaymentEnum } from "../../enum/payment";
+import { ConvertPrice } from "../../helpers";
 import { useAppDispatch, useAppSelector } from "../../hooks/app-hook";
 import { selectIsLoading, selectListDonHang } from "../../stores/donhang";
 import { getListDonHang } from "../../stores/donhang/donhang.thunk";
@@ -151,7 +152,7 @@ const DonHangUserPage = () => {
                   key={donhang.madh}
                 >
                   <Td>{donhang.madh}</Td>
-                  <Td>{donhang.tongTien}</Td>
+                  <Td>{ConvertPrice(donhang.tongTien)}</Td>
                   <Td>
                     <Button
                       background={"#6e9c92"}
@@ -237,6 +238,7 @@ const DonHangUserPage = () => {
           isOpen={isOpenModalDCGH}
           onClose={() => {
             setIsOpenModalDCGH(false);
+            setSelectedDH(initialDonHang);
           }}
           selectedDH={selectedDH}
         />
@@ -247,6 +249,7 @@ const DonHangUserPage = () => {
           isOpen={isOpenModalCTDH}
           onClose={() => {
             setIsOpenModalCTDH(false);
+            setSelectedDH(initialDonHang);
           }}
           selectedDH={selectedDH}
         />
