@@ -20,6 +20,10 @@ export const Header = () => {
   const handleChangePassword = () => {
     navigate("/admin/doimatkhau");
   };
+
+  const handleChangeInformation = () => {
+    navigate("/admin/thongtintaikhoan");
+  };
   return (
     <Box w={"100%"} height={"75px"} backgroundColor={"#6e9c92"}>
       <Box height={"100%"} px={{ lg: "60px", xl: "72px" }}>
@@ -54,7 +58,7 @@ export const Header = () => {
               _hover={{
                 background: "transparent",
               }}
-              onClick={handleChangePassword}
+              onClick={handleChangeInformation}
             >
               Thông tin tài khoản
             </Button>

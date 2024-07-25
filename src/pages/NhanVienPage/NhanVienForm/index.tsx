@@ -26,6 +26,7 @@ interface Props {
   errors: FieldErrors<AddNhanVienFormType>;
   titleButton: string;
   isEdit?: boolean;
+  isDisableLuong?: boolean;
 }
 
 export const NhanVienForm = (props: Props) => {
@@ -36,6 +37,7 @@ export const NhanVienForm = (props: Props) => {
     onSubmit,
     titleButton,
     isEdit = false,
+    isDisableLuong = false,
   } = props;
 
   return (
@@ -121,6 +123,7 @@ export const NhanVienForm = (props: Props) => {
             label="Lương nhân viên"
             errors={errors}
             isRequired
+            disabled={isDisableLuong}
           />
 
           <Button
