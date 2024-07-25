@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { resetAuth } from "../../../stores/auth";
+import { resetNV } from "../../../stores/nhanvien";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -11,8 +12,13 @@ export const Header = () => {
   const handleSignOut = () => {
     localStorage.clear();
     dispatch(resetAuth());
+    dispatch(resetNV());
 
     navigate("/admin/login");
+  };
+
+  const handleChangePassword = () => {
+    navigate("/admin/doimatkhau");
   };
   return (
     <Box w={"100%"} height={"75px"} backgroundColor={"#6e9c92"}>
@@ -32,18 +38,53 @@ export const Header = () => {
           >
             Trang quản trị
           </Flex>
-          <Button
-            background={"transparent"}
-            color={"white"}
-            fontWeight={700}
+
+          <Flex
             alignItems={"center"}
-            _hover={{
-              background: "transparent",
-            }}
-            onClick={handleSignOut}
+            height={"100%"}
+            color={"white"}
+            fontSize={"36px"}
+            fontWeight={700}
           >
-            Đăng xuất
-          </Button>
+            <Button
+              background={"transparent"}
+              color={"white"}
+              fontWeight={700}
+              alignItems={"center"}
+              _hover={{
+                background: "transparent",
+              }}
+              onClick={handleChangePassword}
+            >
+              Thông tin tài khoản
+            </Button>
+
+            <Button
+              background={"transparent"}
+              color={"white"}
+              fontWeight={700}
+              alignItems={"center"}
+              _hover={{
+                background: "transparent",
+              }}
+              onClick={handleChangePassword}
+            >
+              Đổi mật khẩu
+            </Button>
+
+            <Button
+              background={"transparent"}
+              color={"white"}
+              fontWeight={700}
+              alignItems={"center"}
+              _hover={{
+                background: "transparent",
+              }}
+              onClick={handleSignOut}
+            >
+              Đăng xuất
+            </Button>
+          </Flex>
         </Flex>
       </Box>
     </Box>

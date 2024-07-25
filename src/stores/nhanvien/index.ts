@@ -22,6 +22,7 @@ export const initialNhanVien: NhanVienType = {
     username: "",
     password: "",
   },
+  quyen: 0,
 };
 
 const initialState: NhanVienStateType = {
@@ -33,7 +34,9 @@ const initialState: NhanVienStateType = {
 const nhanvienSlice = createSlice({
   name: "nhanvien",
   initialState,
-  reducers: {},
+  reducers: {
+    resetNV: () => initialState,
+  },
   extraReducers,
 });
 
@@ -45,5 +48,7 @@ export const selectIsLoading = (state: ApplicationRootState) =>
 
 export const selectDetailNV = (state: ApplicationRootState) =>
   state.nhanvien.detailNhanVien;
+
+export const { resetNV } = nhanvienSlice.actions;
 
 export default nhanvienSlice.reducer;

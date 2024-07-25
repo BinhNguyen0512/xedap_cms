@@ -12,6 +12,7 @@ export interface NhanVienType {
   email: string;
   luong: number;
   taikhoan: TaiKhoanFormType;
+  quyen: number;
 }
 
 export interface AddNhanVienFormType {

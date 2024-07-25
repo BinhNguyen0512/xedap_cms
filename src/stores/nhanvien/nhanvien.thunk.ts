@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+import { AuthService } from "../../api/auth";
 import { NhanVienService } from "../../api/nhanvien";
 
 export const getListNV = createAsyncThunk(
@@ -23,7 +24,9 @@ export const getDetailNVByUsername = createAsyncThunk(
       const response =
         await NhanVienService.getDetailNhanVienByUsername(username);
 
-      return response.data;
+      const responseTK = await AuthService.getDetailTaiKhoan(username || "");
+
+      return { ...response.data, quyen: responseTK.data.quyen };
     } catch (error) {
       thunkApi.rejectWithValue(error);
     }

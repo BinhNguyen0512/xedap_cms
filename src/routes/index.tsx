@@ -5,6 +5,7 @@ import { DefaultLayout } from "../components/ui/DefaultLayout";
 import DanhMucPage from "../pages/DanhMucPage";
 import DanhMucCreate from "../pages/DanhMucPage/DanhMucCreate";
 import DanhMucEdit from "../pages/DanhMucPage/DanhMucEdit";
+import DoiMatKhauPage from "../pages/DoiMatKhauPage";
 import { DonDatHangPage } from "../pages/DonDatHangPage";
 import DonDatHangCreate from "../pages/DonDatHangPage/DonDatHangCreate";
 import DonHangUserPage from "../pages/DonHangUserPage";
@@ -120,6 +121,10 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/hoadon",
             element: <HoaDonPage />,
+          },
+          {
+            path: "/admin/doimatkhau",
+            element: <DoiMatKhauPage />,
           },
         ],
       },
