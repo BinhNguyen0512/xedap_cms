@@ -144,7 +144,7 @@ export const SanPhamForm = (props: Props) => {
           <InputCustom
             control={control}
             name="dongia"
-            label="Đon giá"
+            label="Đơn giá"
             errors={errors}
             isRequired
           />

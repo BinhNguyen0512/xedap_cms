@@ -76,6 +76,31 @@ export const HoaDonDocument = ({ hoadon }: { hoadon: HoaDonType }) => {
   return (
     <Document>
       <Page style={styles.page}>
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            width: "100%",
+          }}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: "14px",
+              maxWidth: "50%",
+            }}
+          >
+            HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG CƠ SỞ TẠI TP HCM
+          </Text>
+          <Text
+            style={{
+              textAlign: "left",
+              fontSize: "12px",
+            }}
+          >
+            Số 97 Man Thiện, Phường Hiệp Phú, Quận 9, Thành phố Hồ Chí Minh
+          </Text>
+        </View>
         <View style={styles.section}>
           <Text style={styles.textHeader}>Hoá đơn bán hàng</Text>
 
@@ -110,7 +135,13 @@ export const HoaDonDocument = ({ hoadon }: { hoadon: HoaDonType }) => {
                 fontWeight: 500,
               }}
             >
-              <Text>Thông tin giao hàng</Text>
+              <Text
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Thông tin giao hàng:
+              </Text>
 
               <Text>Họ tên: {hoadon.donhang.hoTen} </Text>
               <Text>Email: {hoadon.donhang.email}</Text>

@@ -70,7 +70,7 @@ const PhieuNhapPage = () => {
                   <Td>
                     <PDFDownloadLink
                       document={<PhieuNhapDocument phieunhap={phieunhap} />}
-                      fileName={`hoadon-${phieunhap.mapn}.pdf`}
+                      fileName={`phieunhap-${phieunhap.mapn}.pdf`}
                     >
                       <Button
                         color={"#5998e3"}

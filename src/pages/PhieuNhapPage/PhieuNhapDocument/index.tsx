@@ -76,6 +76,31 @@ export const PhieuNhapDocument = ({
   return (
     <Document>
       <Page style={styles.page}>
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            width: "100%",
+          }}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: "14px",
+              maxWidth: "50%",
+            }}
+          >
+            HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG CƠ SỞ TẠI TP HCM
+          </Text>
+          <Text
+            style={{
+              textAlign: "left",
+              fontSize: "12px",
+            }}
+          >
+            Số 97 Man Thiện, Phường Hiệp Phú, Quận 9, Thành phố Hồ Chí Minh
+          </Text>
+        </View>
         <View style={styles.section}>
           <Text style={styles.textHeader}>Phiếu nhập hàng</Text>
 
@@ -93,9 +118,12 @@ export const PhieuNhapDocument = ({
             <Text style={styles.textStyle}>
               Nhà cung cấp: {phieunhap.dondathang.nhacungcap.tenncc}
             </Text>
+            <Text style={styles.textStyle}>
+              Địa chỉ: {phieunhap.dondathang.nhacungcap.diachi}
+            </Text>
 
             <Text style={styles.textStyle}>
-              Nhân viên: {phieunhap.nhanvien.hoten}
+              Nhân viên lập phiếu: {phieunhap.nhanvien.hoten}
             </Text>
           </View>
 
