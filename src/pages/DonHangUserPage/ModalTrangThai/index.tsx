@@ -122,6 +122,7 @@ export const ModalTrangThai = (props: Props) => {
             name="trangthai"
             label="Trạng thái"
             listOption={listOptionTrangThai}
+            disabled={trangthai === 4}
           />
 
           {Number(trangthai) === 2 && (
