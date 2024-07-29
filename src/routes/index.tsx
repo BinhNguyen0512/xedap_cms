@@ -9,6 +9,7 @@ import DoiMatKhauPage from "../pages/DoiMatKhauPage";
 import { DonDatHangPage } from "../pages/DonDatHangPage";
 import DonDatHangCreate from "../pages/DonDatHangPage/DonDatHangCreate";
 import DonHangUserPage from "../pages/DonHangUserPage";
+import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 import HoaDonPage from "../pages/HoaDonPage";
 import KhachHangPage from "../pages/KhachHangPage";
 import LoginPage from "../pages/LoginPage";
@@ -31,6 +32,10 @@ const routesConfig: RouteObject[] = [
   {
     path: "admin/login",
     element: <LoginPage />,
+  },
+  {
+    path: "admin/forget-password",
+    element: <ForgetPasswordPage />,
   },
   {
     path: "/",

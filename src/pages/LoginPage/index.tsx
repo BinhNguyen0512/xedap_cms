@@ -92,7 +92,7 @@ const LoginPage = () => {
                 isRequired
               />
             </Box>
-            <Box>
+            <Box display={"flex"} flexDirection={"column"} gap={2}>
               <InputPasswordCustom
                 control={control}
                 name="password"
@@ -100,7 +100,19 @@ const LoginPage = () => {
                 errors={errors}
                 isRequired
               />
+
+              <Text
+                textAlign={"right"}
+                cursor={"pointer"}
+                color={"#3182ce"}
+                onClick={() => {
+                  navigate("/admin/forget-password");
+                }}
+              >
+                Quên mật khẩu?
+              </Text>
             </Box>
+
             <Button
               colorScheme="blue"
               mt={"24px"}
