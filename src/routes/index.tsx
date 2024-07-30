@@ -24,6 +24,7 @@ import PhieuNhapPage from "../pages/PhieuNhapPage";
 import SanPhamPage from "../pages/SanPhamPage";
 import SanPhamCreate from "../pages/SanPhamPage/SanPhamCreate";
 import SanPhamEdit from "../pages/SanPhamPage/SanPhamEdit";
+import ThongKePage from "../pages/ThongKePage";
 import ThongTinTaiKhoanPage from "../pages/ThongTinTaiKhoanPage";
 import ThuongHieuPage from "../pages/ThuongHieuPage";
 import ThuongHieuCreate from "../pages/ThuongHieuPage/ThuongHieuCreate";
@@ -140,6 +141,10 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/binhluan",
             element: <BinhLuanPage />,
+          },
+          {
+            path: "/admin/thongke",
+            element: <ThongKePage />,
           },
         ],
       },
