@@ -33,6 +33,7 @@ const tick = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 interface ChartType {
   x: number;
   y: number;
+  fill: string;
 }
 
 const ThongKePage = () => {
@@ -47,6 +48,7 @@ const ThongKePage = () => {
         return {
           x: index + 1,
           y: item.toFixed(0),
+          fill: "#" + Math.floor(Math.random() * 16777215).toString(16),
         };
       });
       setData(listData);
