@@ -2,6 +2,7 @@ import { RouteObject } from "react-router-dom";
 
 import App from "../App";
 import { DefaultLayout } from "../components/ui/DefaultLayout";
+import BinhLuanPage from "../pages/BinhLuanPage";
 import DanhMucPage from "../pages/DanhMucPage";
 import DanhMucCreate from "../pages/DanhMucPage/DanhMucCreate";
 import DanhMucEdit from "../pages/DanhMucPage/DanhMucEdit";
@@ -135,6 +136,10 @@ const routesConfig: RouteObject[] = [
           {
             path: "/admin/thongtintaikhoan",
             element: <ThongTinTaiKhoanPage />,
+          },
+          {
+            path: "/admin/binhluan",
+            element: <BinhLuanPage />,
           },
         ],
       },

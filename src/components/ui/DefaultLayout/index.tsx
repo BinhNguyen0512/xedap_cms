@@ -2,9 +2,7 @@ import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { Fragment, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
-import { AuthService } from "../../../api/auth";
 import avatar from "../../../assets/images/avatar.png";
-import { QuyenEnum } from "../../../enum/quyen";
 import { useAppDispatch, useAppSelector } from "../../../hooks/app-hook";
 import { selectUsername } from "../../../stores/auth";
 import { selectDetailNV, selectIsLoading } from "../../../stores/nhanvien";
@@ -78,6 +76,12 @@ const listSidebar: SidebarType[] = [
     link: "/admin/hoadon",
     name: "Danh sách hoá đơn",
     id: "danh-sach-hoa-don",
+    quyen: [1, 3],
+  },
+  {
+    link: "/admin/binhluan",
+    name: "Danh sách bình luận",
+    id: "danh-sach-binh-luan",
     quyen: [1, 3],
   },
 ];
