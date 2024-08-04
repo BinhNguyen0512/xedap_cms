@@ -8,7 +8,7 @@ interface Props {
 export const PageWrapper = (props: Props) => {
   const { children } = props;
   return (
-    <Box w={"100%"} p={"32px 12px"}>
+    <Box w={"100%"} p={"32px 12px"} overflow={"hidden"}>
       {children}
     </Box>
   );

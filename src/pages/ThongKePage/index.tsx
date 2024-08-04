@@ -1,4 +1,5 @@
 import { Flex } from "@chakra-ui/react";
+import { max } from "lodash";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
@@ -7,6 +8,10 @@ import { DonHangService } from "../../api/donhang";
 import { Loading } from "../../components/ui/Loading";
 import { PageWrapper } from "../../components/ui/PageWrapper";
 import { TitlePage } from "../../components/ui/TitlePage";
+
+function createWithMaxValue(value: number): number {
+  return Math.ceil(value / 1000) * 1000;
+}
 
 const Label = (props: any) => {
   const { x, y, value } = props;
@@ -39,6 +44,8 @@ interface ChartType {
 const ThongKePage = () => {
   const [data, setData] = useState<ChartType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [maxPriceChart, setMaxPriceChart] = useState<number>(0);
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -51,11 +58,18 @@ const ThongKePage = () => {
           fill: "#" + Math.floor(Math.random() * 16777215).toString(16),
         };
       });
+
+      const maxPrice = Number(max(response.data));
+
+      //   setMaxPriceChart(createArrayWithMaxValue(maxKm));
+      setMaxPriceChart(createWithMaxValue(maxPrice));
       setData(listData);
       setIsLoading(false);
     };
     fetchData();
   }, []);
+
+  console.log(maxPriceChart);
 
   return (
     <PageWrapper>
@@ -75,8 +89,11 @@ const ThongKePage = () => {
               type="number"
               domain={[4.5, 13.5]}
               ticks={tick}
+              padding={{
+                left: 100,
+              }}
             />
-            <YAxis />
+            <YAxis domain={[0, maxPriceChart]} />
             <Bar dataKey="y" label={<Label />} fill="#6e9c92" />
           </BarChart>
         )}
